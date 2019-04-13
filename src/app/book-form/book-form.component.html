@@ -1,0 +1,166 @@
+<form class="form">
+  <table class="form-field" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="form-field">
+          <input matInput name="bookName" [(ngModel)]="data['bookName']" placeholder="书名" />
+          <mat-hint>[bookName]</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="form-field" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="form-field">
+          <input matInput name="authors" [(ngModel)]="data['authors']" placeholder="作者列表" />
+          <mat-hint>[authors] 逗号或分号分隔</mat-hint>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="form-field">
+          <input matInput name="isbns" [(ngModel)]="data['isbns']" placeholder="ISBN 列表" />
+          <mat-hint>[isbns] 逗号或分号分隔</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="form-field" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="form-field">
+          <input matInput name="coverUrl" [(ngModel)]="data['coverUrl']" placeholder="封面 (链接)" />
+          <mat-hint>[coverUrl]</mat-hint>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="form-field">
+          <input matInput name="summary" [(ngModel)]="data['summary']" placeholder="摘要" />
+          <mat-hint>[summary]</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="form-field" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="form-field">
+          <input matInput name="topics" [(ngModel)]="data['topics']" placeholder="主题标签列表" />
+          <mat-hint>[topics] 逗号或分号分隔</mat-hint>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="form-field">
+          <input matInput name="series" [(ngModel)]="data['series']" placeholder="系列标签列表" />
+          <mat-hint>[series] 逗号或分号分隔</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="form-field" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="form-field">
+          <input matInput name="arBl" [(ngModel)]="data['arBl']" placeholder="AR ATOS 书籍阅读等级" />
+          <mat-hint>[arBl] (ATOS Book Level, BL)</mat-hint>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="form-field">
+          <mat-select name="arIl" [(ngModel)]="data['arIl']" placeholder="AR 阅读兴趣年龄段">
+            <mat-option value="LG(K-3)">LG(K-3)</mat-option>
+            <mat-option value="MG(4-8)">MG(4-8)</mat-option>
+            <mat-option value="MG+(6 AND UP)">MG+(6 AND UP)</mat-option>
+            <mat-option value="UG(9-12)">UG(9-12)</mat-option>
+          </mat-select>
+          <mat-hint>[arIl] (Interest Level, IL)</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="form-field" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="form-field">
+          <input matInput name="arPoints" [(ngModel)]="data['arPoints']" placeholder="AR QUIZ 达标绩点 (Points)" />
+          <mat-hint>[arPoints]</mat-hint>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="form-field">
+          <input matInput name="arRating" [(ngModel)]="data['arRating']" placeholder="AR 用户评分 (Rating)" />
+          <mat-hint>[arRating]</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="form-field" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="form-field">
+          <mat-select name="lexilePrefix" [(ngModel)]="data['lexilePrefix']" placeholder="Lexile 分级前缀">
+            <mat-option value="AD">AD</mat-option>
+            <mat-option value="NC">NC</mat-option>
+            <mat-option value="HL">HL</mat-option>
+            <mat-option value="IG">IG</mat-option>
+            <mat-option value="GN">GN</mat-option>
+            <mat-option value="BR">BR</mat-option>
+            <mat-option value="NP">NP</mat-option>
+          </mat-select>
+          <mat-hint>[lexilePrefix]</mat-hint>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="form-field">
+          <input matInput name="lexile" [(ngModel)]="data['lexile']" placeholder="Lexile 分级数值" />
+          <mat-hint>[lexile]</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="form-field" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="form-field">
+          <input matInput name="wordcount" [(ngModel)]="data['wordcount']" placeholder="词数" />
+          <mat-hint>[wordcount]</mat-hint>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="form-field">
+          <input matInput name="pagecount" [(ngModel)]="data['pagecount']" placeholder="页数" />
+          <mat-hint>[pagecount]</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="form-field" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="form-field">
+          <mat-select name="isFiction" [(ngModel)]="data['isFiction']" placeholder="是否为小说">
+            <mat-option value="true">小说</mat-option>
+            <mat-option value="false">非小说</mat-option>
+          </mat-select>
+          <mat-hint>[isFiction]</mat-hint>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="form-field">
+          <input matInput name="amazonRating" [(ngModel)]="data['amazonRating']" placeholder="Amazon 用户评分" />
+          <mat-hint>[amazonRating]</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="form-field" cellspacing="0">
+    <tr>
+      <td>
+        <button mat-stroked-button class="form-field" (click)="submit()">提交</button>
+      </td>
+      <td>
+        <button mat-stroked-button class="form-field" (click)="clean()">清空</button>
+      </td>
+    </tr>
+  </table>
+</form>
