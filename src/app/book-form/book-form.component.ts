@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { BookFormDialogComponent } from './book-form-dialog.component';
+import { BookFormService } from './book-form.service';
 import { Book } from '../entities/book.entity';
 
 @Component({
@@ -8,39 +11,50 @@ import { Book } from '../entities/book.entity';
 })
 export class BookFormComponent {
 
-  constructor() { }
+  constructor(private service: BookFormService, private dialogService: MatDialog) { }
 
   data = {}
 
   submit() {
     // TODO: Error Checking
-    console.log('submit')
-    console.log('form data', this.data)
-    const book: Book = {
-      bookName: String(this.data['bookName'] || ''),
-      authors: String(this.data['authors'] || '').split(/[,;，；]/),
-      isbns: String(this.data['isbns'] || '').split(/[,;，；]/),
-      coverUrl: String(this.data['coverUrl'] || ''),
-      summary: String(this.data['summary'] || ''),
-      topics: String(this.data['topics'] || '').split(/[,;，；]/),
-      series: String(this.data['series'] || '').split(/[,;，；]/),
-      isFiction: Boolean(this.data['isFiction'] || ''),
-      arBl: Number(this.data['arBl'] || ''),
-      arIl: String(this.data['arIl'] || ''),
-      arPoints: Number(this.data['arPoints'] || ''),
-      arRating: Number(this.data['arRating'] || ''),
-      lexilePrefix: String(this.data['lexilePrefix'] || ''),
-      lexile: Number(this.data['lexile'] || ''),
-      wordcount: Number(this.data['wordcount'] || ''),
-      pagecount: Number(this.data['pagecount'] || ''),
-      amazonRating: Number(this.data['amazonRating'] || ''),
-    }
-    console.log('book', book)
+    console.log('submit..');
+    console.log('form data', this.data);
+    const book = this.regular(this.data);
+    console.log('book', book);
+    const dialog = this.openDialog();
+    this.service.addBook(book).subscribe(() => { }, () => dialog.close(), () => { dialog.close(); this.clean() });
   }
 
   clean() {
-    console.log('clean')
-    this.data = {}
+    console.log('clean..');
+    this.data = {};
+  }
+
+  openDialog(): MatDialogRef<any, any> {
+    const dialog = this.dialogService.open(BookFormDialogComponent, { disableClose: true });
+    return dialog;
+  }
+
+  regular(data: {}): Book {
+    return {
+      bookName: String(data['bookName'] || ''),
+      authors: String(data['authors'] || '').split(/[,;，；]/),
+      isbns: String(data['isbns'] || '').split(/[,;，；]/),
+      coverUrl: String(data['coverUrl'] || ''),
+      summary: String(data['summary'] || ''),
+      topics: String(data['topics'] || '').split(/[,;，；]/),
+      series: String(data['series'] || '').split(/[,;，；]/),
+      isFiction: Boolean(data['isFiction'] || ''),
+      arBl: Number(data['arBl'] || ''),
+      arIl: String(data['arIl'] || ''),
+      arPoints: Number(data['arPoints'] || ''),
+      arRating: Number(data['arRating'] || ''),
+      lexilePrefix: String(data['lexilePrefix'] || ''),
+      lexile: Number(data['lexile'] || ''),
+      wordcount: Number(data['wordcount'] || ''),
+      pagecount: Number(data['pagecount'] || ''),
+      amazonRating: Number(data['amazonRating'] || ''),
+    };
   }
 
 }
