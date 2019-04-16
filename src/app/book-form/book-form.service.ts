@@ -8,7 +8,7 @@ export class BookFormService {
 
   constructor(private http: HttpClient) { }
 
-  addBook(book: Book): Observable<void> {
+  addBook(book: Partial<Book>): Observable<void> {
     const options = { headers: { 'Content-Type': 'application/json' } };
     return this.http.post<void>('/api/user/addBook', book, options);
   }

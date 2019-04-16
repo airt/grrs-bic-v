@@ -35,25 +35,27 @@ export class BookFormComponent {
     return dialog;
   }
 
-  regular(data: {}): Book {
+  regular(data: { [k: string]: string }): Partial<Book> {
+    const split = (s: string) => s.split(/[,;，；]/);
+    const h = <T, R>(x: T, f: (x: T) => R) => x && f(x)
     return {
-      bookName: String(data['bookName'] || ''),
-      authors: String(data['authors'] || '').split(/[,;，；]/),
-      isbns: String(data['isbns'] || '').split(/[,;，；]/),
-      coverUrl: String(data['coverUrl'] || ''),
-      summary: String(data['summary'] || ''),
-      topics: String(data['topics'] || '').split(/[,;，；]/),
-      series: String(data['series'] || '').split(/[,;，；]/),
-      isFiction: Boolean(data['isFiction'] || ''),
-      arBl: Number(data['arBl'] || ''),
-      arIl: String(data['arIl'] || ''),
-      arPoints: Number(data['arPoints'] || ''),
-      arRating: Number(data['arRating'] || ''),
-      lexilePrefix: String(data['lexilePrefix'] || ''),
-      lexile: Number(data['lexile'] || ''),
-      wordcount: Number(data['wordcount'] || ''),
-      pagecount: Number(data['pagecount'] || ''),
-      amazonRating: Number(data['amazonRating'] || ''),
+      bookName: h(data['bookName'], String),
+      authors: h(data['authors'], split),
+      isbns: h(data['isbns'], split),
+      coverUrl: h(data['coverUrl'], String),
+      summary: h(data['summary'], String),
+      topics: h(data['topics'], split),
+      series: h(data['series'], split),
+      isFiction: h(data['isFiction'], Boolean),
+      arBl: h(data['arBl'], Number),
+      arIl: h(data['arIl'], String),
+      arPoints: h(data['arPoints'], Number),
+      arRating: h(data['arRating'], Number),
+      lexilePrefix: h(data['lexilePrefix'], String),
+      lexile: h(data['lexile'], Number),
+      wordcount: h(data['wordcount'], Number),
+      pagecount: h(data['pagecount'], Number),
+      amazonRating: h(data['amazonRating'], Number),
     };
   }
 
